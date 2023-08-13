@@ -29,7 +29,7 @@ int is_palindrome(listint_t **head)
 	}
 	middle = slow->next;
 	fast = slow->next; /* reverse the second half */
-	while (middle->next != NULL)
+	while (middle != NULL && middle->next != NULL)
 	{
 		current = middle->next;
 		middle->next = middle->next->next;
