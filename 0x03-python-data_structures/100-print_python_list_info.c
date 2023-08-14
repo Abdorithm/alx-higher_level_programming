@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <Python.h>
-#include <object.h>
-#include <listobject.h>
+#include "Python.h"
 
 /**
  * print_python_list_info - print python lists info.
@@ -15,7 +13,7 @@ void print_python_list_info(PyObject *p)
 
 	size = Py_SIZE(p);
 	printf("[*] Size of the Python List = %d\n", size);
-	printf("[*] Allocated = %d\n", list_p->allocated);
+	printf("[*] Allocated = %ld\n", list_p->allocated);
 
 	for (i = 0; i < size; i++)
 		printf("Element %d: %s\n", i, list_p->ob_item[i]->ob_type->tp_name);
