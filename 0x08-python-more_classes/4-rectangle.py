@@ -81,3 +81,20 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return 0
         return 2 * (self.__height + self.__width)
+
+    def __str__(self):
+        """returns a strings representing the
+        rectangle with the character #
+        """
+        string = ""
+        if self.__width != 0 and self.__height != 0:
+            string += "\n".join("#" * self.__width
+                                for j in range(self.__height))
+        return string
+
+    def __repr__(self):
+        """returns a string representation
+        of the rectangle for creation of a new
+        instance afterwards
+        """
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
