@@ -1,0 +1,37 @@
+The ``1-my_list`` module
+======================
+
+Using ``MyList``
+-------------------
+
+Importing the function from the module:
+>>> MyList = __import__("1-my_list").MyList
+
+Checking for module docstring:
+>>> m = __import__("1-my_list").__doc__
+>>> len(m) > 1
+True
+
+Checking for function docstring:
+>>> f = __import__("1-my_list").MyList.__doc__
+>>> len(f) > 1
+True
+
+Check for regular append:
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.print_sorted()
+[1, 2, 4]
+
+Check for negative append:
+>>> my_list.append(-5)
+>>> my_list.print_sorted()
+[-5, 1, 2, 4]
+
+Check if the original list is unchanged:
+>>> print(my_list)
+[1, 4, 2, -5]
+>>> my_list.print_sorted()
+[-5, 1, 2, 4]
