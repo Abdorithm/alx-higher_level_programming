@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines the base class"""
 import json
-import os.path
 
 
 class Base():
@@ -34,7 +33,7 @@ class Base():
         toBeSaved = []
         if list_objs is not None:
             for obj in list_objs:
-                toBeSaved.append(obj.__dict__)
+                toBeSaved.append(obj.to_dictionary())
         filename = "{}.json".format(cls.__name__)
         with open(filename, 'w', encoding="utf-8") as f:
             f.write(cls.to_json_string(toBeSaved))
@@ -63,11 +62,9 @@ class Base():
     def load_from_file(cls):
         """returns a list of instances"""
         filename = "{}.json".format(cls.__name__)
-        list_objs = []
-        if os.path.isfile(filename) is False:
-            return list_objs
-        with open(filename, 'r', encoding="utf-8") as f:
-            wasSaved = json.load(f)
-        for each in wasSaved:
-            list_objs.append(cls.create(**each))
-        return list_objs
+        try:
+            with open(filename, 'r', encoding="utf-8") as f:
+                wasSaved = json.load(f)
+            return [cls.create(**each) for each in wasSaved]
+        except IOError:
+            return []
