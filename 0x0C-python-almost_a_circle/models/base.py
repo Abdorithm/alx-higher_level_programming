@@ -35,10 +35,9 @@ class Base():
         if list_objs is not None:
             for obj in list_objs:
                 toBeSaved.append(obj.__dict__)
-        toBeSaved = cls.to_json_string(toBeSaved)
         filename = "{}.json".format(cls.__name__)
         with open(filename, 'w', encoding="utf-8") as f:
-            f.write(toBeSaved)
+            f.write(cls.to_json_string(toBeSaved))
 
     @staticmethod
     def from_json_string(json_string):
