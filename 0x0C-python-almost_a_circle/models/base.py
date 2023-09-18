@@ -64,7 +64,7 @@ class Base():
         filename = "{}.json".format(cls.__name__)
         try:
             with open(filename, 'r', encoding="utf-8") as f:
-                wasSaved = json.load(f)
+                wasSaved = Base.from_json_string(f.read())
             return [cls.create(**each) for each in wasSaved]
         except IOError:
             return []
