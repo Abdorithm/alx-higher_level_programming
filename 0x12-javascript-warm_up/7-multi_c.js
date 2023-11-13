@@ -1,11 +1,11 @@
 #!/usr/bin/node
 
-const args = process.argv;
+const arg = parseInt(process.argv[2]);
 
-if (args.length > 2 && Number.isInteger(parseInt(args[2])) === true) {
-  for (let i = 0; i < args[2]; i++) {
+if (isNaN(arg)) {
+  console.log('Missing number of occurrences');
+} else {
+  for (let i = 0; i < arg; i++) {
     console.log('C is cool');
   }
-} else {
-  console.log('Missing number of occurrences');
 }
