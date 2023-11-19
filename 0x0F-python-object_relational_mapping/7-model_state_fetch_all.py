@@ -14,11 +14,8 @@ if __name__ == '__main__':
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format
                            (username, password, database), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-
-    session = Session(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
 
     for row in session.query(State).order_by(State.id):
         print("{}: {}".format(row.id, row.name))
-
-    session.close()
