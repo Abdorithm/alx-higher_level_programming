@@ -4,6 +4,7 @@ with the letter as a parameter. """
 import sys
 import requests
 
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         char = ""
@@ -11,7 +12,7 @@ if __name__ == "__main__":
         char = sys.argv[1]
     payload = {"p": char}
 
-    r = requests.post('http://0.0.0.0:5000/search_user', params=payload)
+    r = requests.post('http://0.0.0.0:5000/search_user', data=payload)
 
     try:
         response = r.json()
