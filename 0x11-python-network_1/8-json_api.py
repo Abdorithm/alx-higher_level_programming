@@ -11,7 +11,7 @@ if __name__ == "__main__":
         char = sys.argv[1]
     payload = {"p": char}
 
-    r = requests.get('http://0.0.0.0:5000/search_user', params=payload)
+    r = requests.post('http://0.0.0.0:5000/search_user', params=payload)
 
     try:
         response = r.json()
