@@ -3,10 +3,7 @@
 const request = require('request');
 
 // Get the URL from the command line arguments
-const apiUrl = "https://swapi-api.alx-tools.com/api/films/" + process.argv[2];
-
-// Counter to count occurrences of the specified URL
-let counter = 0;
+const apiUrl = 'https://swapi-api.alx-tools.com/api/films/' + process.argv[2];
 
 // Send a GET request to the specified URL
 request.get(apiUrl, (error, response, body) => {
